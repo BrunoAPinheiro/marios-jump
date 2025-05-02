@@ -23,7 +23,7 @@ toggleSoundButton.addEventListener('click', () => {
 const adjustGameForScreenSize = () => {
     if (window.innerWidth <= 768) { 
         document.documentElement.style.setProperty('--jump-height', '220px'); 
-        document.documentElement.style.setProperty('--pipe-speed', '1.2s'); 
+        document.documentElement.style.setProperty('--pipe-speed', '0.9s'); 
     } else {
         document.documentElement.style.setProperty('--jump-height', '180px'); 
         document.documentElement.style.setProperty('--pipe-speed', '1.5s'); 
@@ -32,6 +32,28 @@ const adjustGameForScreenSize = () => {
 
 adjustGameForScreenSize();
 window.addEventListener('resize', adjustGameForScreenSize);
+
+const adjustFOVForScreenSize = () => {
+    const gameBoard = document.querySelector('.game-board');
+    const mario = document.querySelector('.mario');
+    const pipe = document.querySelector('.pipe');
+    const clouds = document.querySelector('.clouds');
+
+    if (window.innerWidth <= 768) { 
+        gameBoard.style.height = '400px'; 
+        mario.style.width = '120px'; 
+        pipe.style.width = '60px'; 
+        clouds.style.width = '400px';
+    } else { 
+        gameBoard.style.height = '500px'; 
+        mario.style.width = '150px'; 
+        pipe.style.width = '80px'; 
+        clouds.style.width = '500px';
+    }
+};
+
+adjustFOVForScreenSize();
+window.addEventListener('resize', adjustFOVForScreenSize);
 
 const jump = () => {
     mario.classList.add('jump');
@@ -47,7 +69,7 @@ let gamePaused = false;
 pipe.style.animationPlayState = 'paused';
 
 const loop = setInterval(() => {
-    if (!gameStarted || gamePaused) return; // Pausa o loop se o jogo não começou ou está pausado
+    if (!gameStarted || gamePaused) return; 
 
     const pipePosition = pipe.offsetLeft;
     const marioPosition = +window.getComputedStyle(mario).bottom.replace('px', '');

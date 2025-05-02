@@ -153,8 +153,24 @@ button :hover {
     }
 }
 
+@media (max-width: 768px) {
+    .game-board {
+        height: 400px;
+        max-width: 100%;
+    }
 
+    .mario {
+        width: 100px;
+    }
 
+    .pipe {
+        width: 60px; 
+    }
+    .clouds {
+        width: 300px;
+    }
 
-
-
+    #score {
+        font-size: 16px; 
+    }
+}
