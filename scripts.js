@@ -23,7 +23,7 @@ toggleSoundButton.addEventListener('click', () => {
 const adjustGameForScreenSize = () => {
     if (window.innerWidth <= 768) { 
         document.documentElement.style.setProperty('--jump-height', '220px'); 
-        document.documentElement.style.setProperty('--pipe-speed', '2s'); 
+        document.documentElement.style.setProperty('--pipe-speed', '1.2s'); 
     } else {
         document.documentElement.style.setProperty('--jump-height', '180px'); 
         document.documentElement.style.setProperty('--pipe-speed', '1.5s'); 
