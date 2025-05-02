@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="PT-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script src="./scripts.js" defer></script>
+    <title>Mario´s Jump</title>
+</head>
+
+<body>
+
+    <div class="game-board">
+
+        <img src="./assets/clouds.png" class="clouds">
+        <img src="./assets/mario.gif" class="mario">
+        <img src="./assets/pipe.png" class="pipe">
+        <img id="game-over-image" src="./assets/game-over-palavra.png" alt="Game Over" style="display: none; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 300px;">
+
+    </div>
+
+
+    <div class="controls">
+
+        <button class="start-button">Start</button>
+        <button id="pause-button" style="display: none;">Pause</button>
+        <button class="restart-button" style="display: none;">Restart</button>
+        <span id="score" style="font-size: 20px; margin-left: 20px;">Score = 0</span>    
+        <button id="toggle-sound">Mute</button>
+
+    </div>
+
+
+    <audio id="game-over-audio" src="./assets/2-69 - Game Over.mp3" preload="auto"></audio>
+    <audio id="background-music" src="./assets/1-06 - Super Mario Bros..mp3" preload="auto" loop></audio>
+</body>
+
+</html>
