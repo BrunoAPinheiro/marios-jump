@@ -19,6 +19,20 @@ toggleSoundButton.addEventListener('click', () => {
     gameOverAudio.muted = isMuted;
     toggleSoundButton.textContent = isMuted ? 'Unmute' : 'Mute';
 });
+
+const adjustGameForScreenSize = () => {
+    if (window.innerWidth <= 768) { 
+        document.documentElement.style.setProperty('--jump-height', '220px'); 
+        document.documentElement.style.setProperty('--pipe-speed', '2s'); 
+    } else {
+        document.documentElement.style.setProperty('--jump-height', '180px'); 
+        document.documentElement.style.setProperty('--pipe-speed', '1.5s'); 
+    }
+};
+
+adjustGameForScreenSize();
+window.addEventListener('resize', adjustGameForScreenSize);
+
 const jump = () => {
     mario.classList.add('jump');
 
@@ -60,11 +74,10 @@ const loop = setInterval(() => {
         clearInterval(loop);
     }
         if (pipePosition < 0 && !pipe.classList.contains('scored')) {
-            score++; // Incrementa a pontuação
-            scoreDisplay.textContent = `Score: ${score}`; // Atualiza o contador na tela
-            pipe.classList.add('scored'); // Marca o pipe como "pontuado"
+            score++; 
+            scoreDisplay.textContent = `Score: ${score}`; 
+            pipe.classList.add('scored'); 
     
-            // Remove a classe "scored" após um tempo para permitir novos pontos
             setTimeout(() => {
                 pipe.classList.remove('scored');
             }, 500);
@@ -79,7 +92,7 @@ startButton.addEventListener('click', (event) => {
     startButton.style.display = 'none';
     restartButton.style.display = 'inline-block';
     pauseButton.style.display = 'inline-block';
-    pipe.style.animation = 'pipe-animation 1.5s infinite linear';
+    pipe.style.animation = `pipe-animation var(--pipe-speed) infinite linear`; 
     pipe.style.animationPlayState = 'running';
     backgroundMusic.play();
     document.addEventListener('keydown', jump);
